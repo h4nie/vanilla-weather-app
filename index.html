@@ -15,47 +15,54 @@
   </head>
   <body>
     <div class="container">
-      <form id="search-city-form">
-        <div class="row">
-          <div class="col-9">
-            <input
-              type="search"
-              placeholder="search city"
-              class="form-control"
-              id="search-city-input"
-            />
-          </div>
-          <div class="col-3">
-            <input type="submit" value="search" class="btn btn-primary" />
-          </div>
-        </div>
-      </form>
-      <h1>Tehran</h1>
-      <ul>
-        <li>Monday 11:50</li>
-        <li>Clear</li>
-      </ul>
-      <div class="row">
-        <div class="col-6">
-          <img
-            src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
-            alt="condition"
-          />
-          17°C|°F
-        </div>
-        <div class="col-6">
-          <ul>
-            <li>Humidity=60%</li>
-            <li>Wind=6 Km/h</li>
+      <div class="weather-app">
+        <div class="frame">
+          <form id="search-city-form" class="pb-3">
+            <div class="row">
+              <div class="col-8">
+                <input
+                  type="search"
+                  placeholder="search city"
+                  class="form-control"
+                  id="search-city-input"
+                />
+              </div>
+              <div class="col-3">
+                <input type="submit" value="search" class="btn btn-primary" />
+              </div>
+            </div>
+          </form>
+          <h1>Tehran</h1>
+          <ul class="mb-3">
+            <li>Monday 11:50</li>
+            <li>Clear</li>
           </ul>
+          <div class="row">
+            <div class="col-3">
+              <img
+                src="https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png"
+                alt="condition"
+              />
+            </div>
+            <div class="col-3">
+              <strong class="current-temperature">17</strong>
+              <small class="units"><a href="#">°C</a>|<a href="#">°F</a></small>
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Humidity=60%</li>
+                <li>Wind=6 Km/h</li>
+              </ul>
+            </div>
+          </div>
         </div>
+        <small>
+          <a href="https://github.com/h4nie/vanilla-weather-app" target="_blank"
+            >Open-source code</a
+          >
+          by Hanie
+        </small>
       </div>
-      <small>
-        <a href="https://github.com/h4nie/vanilla-weather-app" target="_blank"
-          >Open-source code</a
-        >
-        by Hanie
-      </small>
     </div>
     <script src="src/app.js"></script>
   </body>
