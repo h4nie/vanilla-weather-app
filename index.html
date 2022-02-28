@@ -14,7 +14,23 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container"></div>
+    <div class="container">
+      <form id="search-city-form">
+        <div class="row">
+          <div class="col-9">
+            <input
+              type="search"
+              placeholder="search city"
+              class="form-control"
+              id="search-city-input"
+            />
+          </div>
+          <div class="col-3">
+            <input type="submit" value="search" class="btn btn-primary" />
+          </div>
+        </div>
+      </form>
+    </div>
     <script src="src/app.js"></script>
   </body>
 </html>
