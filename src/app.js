@@ -56,7 +56,20 @@ function getCityName(event) {
   let cityName = cityNameElement.value;
   makeApiUrl(cityName);
 }
+function showFahrenheit() {
+  let temperatureElement = document.querySelector("#today-temperature");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+function showCelsius() {
+  let temperatureElement = document.querySelector("#today-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
 let celsiusTemp = null;
 makeApiUrl("Toronto");
 let searchCityButton = document.querySelector("#search-city-form");
 searchCityButton.addEventListener("submit", getCityName);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsius);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
