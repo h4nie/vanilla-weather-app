@@ -1,6 +1,7 @@
 function showCityWeather(response) {
   celsiusTemp = response.data.main.temp;
   let cityElement = document.querySelector("#city-name");
+
   cityElement.innerHTML = response.data.name;
   let todayTempElement = document.querySelector("#today-temperature");
   todayTempElement.innerHTML = Math.round(celsiusTemp);
@@ -43,9 +44,19 @@ function showCityWeather(response) {
   let dayElement = document.querySelector("#day");
   dayElement.innerHTML = day;
 }
+function makeApiUrl(city) {
+  let myKey = "68548d6af374817b9b8a629525c6ac52";
+  let units = "metric";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${myKey}&units=${units}`;
+  axios.get(apiUrl).then(showCityWeather);
+}
+function getCityName(event) {
+  event.preventDefault();
+  let cityNameElement = document.querySelector("#search-city-input");
+  let cityName = cityNameElement.value;
+  makeApiUrl(cityName);
+}
 let celsiusTemp = null;
-let myKey = "68548d6af374817b9b8a629525c6ac52";
-let cityName = "sydney";
-let units = "metric";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${myKey}&units=${units}`;
-axios.get(apiUrl).then(showCityWeather);
+makeApiUrl("Toronto");
+let searchCityButton = document.querySelector("#search-city-form");
+searchCityButton.addEventListener("submit", getCityName);
