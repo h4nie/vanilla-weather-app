@@ -60,10 +60,18 @@ function showFahrenheit() {
   let temperatureElement = document.querySelector("#today-temperature");
   let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+  let celsiusUnitElement = document.querySelector("#celsius-link");
+  celsiusUnitElement.classList.remove("active");
+  let fahrenheitUnitElement = document.querySelector("#fahrenheit-link");
+  fahrenheitUnitElement.classList.add("active");
 }
 function showCelsius() {
   let temperatureElement = document.querySelector("#today-temperature");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
+  let celsiusUnitElement = document.querySelector("#celsius-link");
+  celsiusUnitElement.classList.add("active");
+  let fahrenheitUnitElement = document.querySelector("#fahrenheit-link");
+  fahrenheitUnitElement.classList.remove("active");
 }
 let celsiusTemp = null;
 makeApiUrl("Toronto");

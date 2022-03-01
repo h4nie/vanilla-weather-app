@@ -31,3 +31,22 @@ small.units {
   position: relative;
   bottom: 27px;
 }
+a.active {
+  color: #046861;
+  cursor: default;
+}
+a.active:hover {
+  cursor: default;
+}
+a.link {
+  text-decoration: none;
+}
+input#search-button {
+  color: rgb(250, 239, 221);
+  background-color: #30968f;
+  border-color: #30968f;
+}
+input#search-city-input {
+  background-color: rgb(250, 239, 221);
+  border-color: rgb(250, 239, 221);
+}
