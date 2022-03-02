@@ -1,3 +1,23 @@
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = `<div class="row">`;
+  let forcastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  forcastDays.forEach(function addForecastHtml(day) {
+    forecast =
+      forecast +
+      `<div class="col-2">
+       <div>${day}</div>
+       <img
+         src="https://ssl.gstatic.com/onebox/weather/48/snow_light.png"
+         alt="weather"
+       />
+       <div>
+         <span>12°</span> <span>3°</span>
+       </div>
+     </div>`;
+  });
+  forecastElement.innerHTML = forecast + `</div>`;
+}
 function showCityWeather(response) {
   celsiusTemp = response.data.main.temp;
   let cityElement = document.querySelector("#city-name");
@@ -81,3 +101,5 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
+
+displayForecast();

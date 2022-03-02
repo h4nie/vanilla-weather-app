@@ -50,3 +50,6 @@ input#search-city-input {
   background-color: rgb(250, 239, 221);
   border-color: rgb(250, 239, 221);
 }
+#forecast {
+  text-align: center;
+}
