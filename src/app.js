@@ -1,27 +1,46 @@
-function displayForecast() {
+function getDay(dt) {
+  let date = new Date(dt * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
+  let forecastDays = response.data.daily;
+  console.log(forecastDays);
   let forecast = `<div class="row">`;
-  let forcastDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  forcastDays.forEach(function addForecastHtml(day) {
-    forecast =
-      forecast +
-      `<div class="col-2">
-       <div>${day}</div>
+  forecastDays.forEach(function addForecastHtml(forecastData, index) {
+    if (index < 6) {
+      forecast =
+        forecast +
+        `<div class="col-2">
+       <div>${getDay(forecastData.dt)}</div>
        <img
-         src="https://ssl.gstatic.com/onebox/weather/48/snow_light.png"
-         alt="weather"
+         src="http://openweathermap.org/img/wn/${
+           forecastData.weather[0].icon
+         }@2x.png"
+         alt="weather" width=50px
        />
+       
        <div>
-         <span>12°</span> <span>3°</span>
+         <span>${Math.round(forecastData.temp.max)}°</span> <span>${Math.round(
+          forecastData.temp.min
+        )}°</span>
        </div>
      </div>`;
+    }
   });
   forecastElement.innerHTML = forecast + `</div>`;
+}
+function getForecastApi(lat, lon) {
+  let myKey = "68548d6af374817b9b8a629525c6ac52";
+  let units = "metric";
+  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${myKey}&units=${units}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function showCityWeather(response) {
   celsiusTemp = response.data.main.temp;
   let cityElement = document.querySelector("#city-name");
-
   cityElement.innerHTML = response.data.name;
   let todayTempElement = document.querySelector("#today-temperature");
   todayTempElement.innerHTML = Math.round(celsiusTemp);
@@ -63,6 +82,7 @@ function showCityWeather(response) {
 
   let dayElement = document.querySelector("#day");
   dayElement.innerHTML = day;
+  getForecastApi(response.data.coord.lat, response.data.coord.lon);
 }
 function makeApiUrl(city) {
   let myKey = "68548d6af374817b9b8a629525c6ac52";
@@ -101,5 +121,3 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsius);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
-
-displayForecast();
