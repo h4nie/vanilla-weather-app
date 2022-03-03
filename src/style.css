@@ -15,14 +15,26 @@ li {
 }
 .weather-app {
   width: 50%;
-  min-width: 400px;
+  min-width: 460px;
   margin: 50px auto 10px;
 }
 .frame {
   padding: 30px;
   background: #8ed2c9;
   border-radius: 15px;
-  color: #046861;
+  color: #063336;
+}
+#description:first-letter {
+  text-transform: uppercase;
+}
+#icon {
+  position: relative;
+  bottom: 15px;
+}
+.humidity-wind {
+  position: relative;
+  top: 13px;
+  font-size: 15px;
 }
 strong.current-temperature {
   font-size: 50px;
@@ -31,25 +43,34 @@ small.units {
   position: relative;
   bottom: 27px;
 }
+a.link {
+  text-decoration: none;
+  color: #68817d;
+}
+a.link:hover {
+  font-size: 16px;
+}
+
 a.active {
   color: #046861;
   cursor: default;
 }
 a.active:hover {
   cursor: default;
-}
-a.link {
-  text-decoration: none;
+  font-size: 14px;
 }
 input#search-button {
-  color: rgb(250, 239, 221);
-  background-color: #30968f;
-  border-color: #30968f;
+  color: #f2f2f1;
+  background-color: #00aaa0;
+  border-color: #00aaa0;
 }
 input#search-city-input {
-  background-color: rgb(250, 239, 221);
-  border-color: rgb(250, 239, 221);
+  background-color: #f2f2f1;
+  border-color: #f2f2f1;
 }
 #forecast {
   text-align: center;
+}
+.forecast-temperature {
+  font-size: 13px;
 }

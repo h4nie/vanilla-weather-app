@@ -7,7 +7,6 @@ function getDay(dt) {
 function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastDays = response.data.daily;
-  console.log(forecastDays);
   let forecast = `<div class="row">`;
   forecastDays.forEach(function addForecastHtml(forecastData, index) {
     if (index < 6) {
@@ -22,10 +21,10 @@ function displayForecast(response) {
          alt="weather" width=50px
        />
        
-       <div>
-         <span>${Math.round(forecastData.temp.max)}°</span> <span>${Math.round(
-          forecastData.temp.min
-        )}°</span>
+       <div class="forecast-temperature">
+         <span><strong>${Math.round(
+           forecastData.temp.max
+         )}°</strong></span> <span>${Math.round(forecastData.temp.min)}°</span>
        </div>
      </div>`;
     }
